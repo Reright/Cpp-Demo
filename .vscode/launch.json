@@ -10,7 +10,8 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": true,
-            "MIMode": "lldb"
+            "MIMode": "lldb",
+            "preLaunchTask": "Build Demo"
         },
         {
             "name": "(gdb) 启动",
