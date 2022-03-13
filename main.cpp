@@ -20,6 +20,22 @@ class Student
 };
 
 
+class A {
+private:
+    int a;
+public:
+	virtual void set_a(int x) { this->a = x; }
+	void put_a() { cout << this->a << endl; }
+};
+class B :public A {
+private:
+	int b;
+public:
+	void set_b() { b = 10; }
+	void set_a(int x) { this->b = x; }
+	virtual void put_b() { cout << this->b << endl; }
+};
+
 int main(int argc, char**  argv)
 {
     cout << "Hello World!" << endl;
@@ -27,8 +43,46 @@ int main(int argc, char**  argv)
     std::shared_ptr<int> fix1(new int);
     // shared_ptr是个类， 所以不能写成std::shared_ptr<int> p = new int(1); 
     std::shared_ptr<Student> li(new Student("LiHua", 96));
+    // 把(new Student("LiHua", 96))这一指针当作li的入参，shared_ptr是个模板类，Student是模板。
     std::shared_ptr<Student> wang = std::make_shared<Student>("Wang", 98);
     std::cout << li->name << " " << li->score << std::endl;
     std::cout << wang->name << " " << wang->score << std::endl;
+
+    shared_ptr<double> pd;  // 这时是一个空指针，0x0
+    cout << hex << "0x" << pd << endl;
+    double* p_reg = new double;
+    cout << hex << "0x" << p_reg << " " << *p_reg << endl;
+    // pd = p_reg; 这样是错误的，普通指针不能直接赋值给智能指针，但可以作为智能指针的入参来初始化它，如：
+    pd = shared_ptr<double>(p_reg);
+    cout << hex << "0x" << pd << " " << *p_reg << endl;
+    // 把智能指针赋值给普通指针也是不可以的,虽然c++pp上说可以，但实际编译是不通过的：
+    // double* p_new = pd;
+    std::vector<int>* vptr = new std::vector<int>{1, 2, 3, 4, 5};
+    vptr->push_back(7);
+    for(int i = 0; i < vptr->size(); i++) {
+        std::cout << " It's back is " << vptr->back() << std::endl; 
+        break;
+    }
+    shared_ptr<double> dptr(new double(7.009));
+    cout << "double is " << *dptr << endl;
+
+    unique_ptr<string> str(new string("This is unique_ptr test."));
+    cout << *str << endl;
+
+    cout << endl << endl << "A B class test " << endl;
+    A objA, *pA;
+	B objB;
+	pA = &objB;
+	pA->set_a(10);
+    cout << "pA->put(a)" << endl;
+    pA->put_a();
+	// pA->put_b();//会报错
+    objB.set_b();
+    cout << "objB.put_b()" << endl;
+    objB.put_b();
+    // pA->set_b(); 这是非虚函数，看指针类型，A没有set_b()函数，所以报错
+
+    cout << endl << endl << "Demo ends" << endl;
+
     return 0;
 }

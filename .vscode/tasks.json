@@ -6,12 +6,14 @@
         {
             "label": "Build Demo",
             "type": "shell",
-            "command": "source ./.vscode/build.sh"
+            "command": "source ./.vscode/build.sh",
+            "problemMatcher": []
         },
         {
             "label": "Run Demo",
             "type": "shell",
-            "command": "source ./.vscode/run.sh"
+            "command": "source ./.vscode/run.sh",
+            "problemMatcher": []
         }
     ]
 }
