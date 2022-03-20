@@ -44,7 +44,10 @@ const int* const mallocE()
 
 class Point {
 public:
-    Point(int _x):x(_x) {}
+    Point(int _x, int _z):x(_x), z(_z)  //可以在初始化列表中初始化const成员变量 
+    {
+        // z = 10; 不可以在构造函数中初始化const成员变量
+    }
     
     void testConstFunction(int _x) const
     {
@@ -57,8 +60,15 @@ public:
     {
         x = _x;
     }
+    const int Get_z()
+    {
+        cout << "z: " << z << endl;
+        return z;
+    }
+private:
     int x;
     mutable int y;
+    const int z;  // 可以在声明时初始化，提供一个默认初始化值，但可以被初始化列表覆盖。
 };
 
 int main(int argc, char**  argv)
@@ -132,5 +142,23 @@ int main(int argc, char**  argv)
     cout << *A << " " << *B << " " << *C << " " << *D << endl;
     cout << hex << A << endl << B << endl << C << endl << D << endl;
     cout << hex << &A << endl << &B << endl << &C << endl << &D << endl;
+
+    cout << "======Const 引用======" << endl;
+    int i = 42;
+    int &r1 = i;
+    const int &r2 = i;
+    r1 = 0;
+    cout <<
+    "i: " << i << endl <<
+    "r1: " << r1 << endl <<
+    "r2: " << r1 << endl;
+    // r2 = 1;  const引用不能修改它所绑定的对象
+
+    const int ci = 1024;
+    // int &r3 = ci;  不能将非常量引用指向一个常量对象
+    
+    cout << "======Const成员变量======" << endl;
+    Point* cp = new Point(3,7);
+    cp->Get_z();
     return 0;
 }
