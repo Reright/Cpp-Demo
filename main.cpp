@@ -25,10 +25,23 @@ private:
 int A::sa = 4;
 // const int A::sca = 5;
 
+void printOS(){
+    cout << "your Operating System :";
+#ifdef _WIN32
+    cout << " Windows!" << endl;
+#elif __linux__
+    cout << " Linux!" << endl;
+#elif __APPLE__
+    cout << " MAC!" << endl;
+#else
+    cout << " others" << endl;
+#endif
+}
+
 int main(int argc, char**  argv)
 {
     cout << "Hello World!" << endl << endl << endl;
     A* pa1 = new A(2);
-
+    printOS();
     return 0;
 }
