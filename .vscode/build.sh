@@ -3,4 +3,4 @@ echo 'Echo'
 
 CXX=g++
 
-g++ -std=c++11 main.cpp  -g -o main.o
+g++ -std=c++11 main.cpp -I ./ -g -o main.o
