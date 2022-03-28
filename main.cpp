@@ -2,7 +2,9 @@
 
 using namespace std;
 
-A g_a(0);
+A s_a("全局静态变量");
+A g_a("全局变量");
+// A s_a("全局静态变量");
 
 int main(int argc, char**  argv)
 {
