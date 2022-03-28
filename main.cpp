@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <string>
+#include "main.h"
 
 using namespace std;
 
