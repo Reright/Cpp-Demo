@@ -5,6 +5,28 @@
 
 using namespace std;
 
+class A{
+public:
+    void funA(){
+        cout << "class A" << endl;
+    }
+};
+
+struct B: A{ // 由于 B 是 struct，A 的默认继承级别为 public
+public:
+    void funB(){
+        cout << "class B" << endl;
+    }
+};
+
+class C: B{ // 由于 C 是 class，B 的默认继承级别为 private，所以无法访问基类 B 中的 printB 函数
+public:
+    void funA(){  // 但在明确了public访问权限的情况下，可以重写funA函数
+        cout << "class C" << endl;
+    }
+};
+
+
 class Base
 {
 public:
