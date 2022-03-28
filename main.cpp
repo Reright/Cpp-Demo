@@ -23,5 +23,8 @@ int main(int argc, char**  argv)
     C ex3;
     // ex3.funB(); // error: 'B' is not an accessible base of 'C'.
     ex3.funA();
+
+    static A sa;
+    const A ca;
     return 0;
 }
