@@ -15,6 +15,7 @@ public:
     A(const string& a):dscrp(a)
     {
         cout << "调用 A 构造函数 : " << dscrp << endl;
+        cout << "Size is " << dscrp.size() << endl;
     }
     ~A()
     {
@@ -27,5 +28,5 @@ private:
 void GetA()
 {
     cout << "进入 GetA 函数执行" << endl;
-    static A a("局部静态变量");
+    static A a("local");
 }

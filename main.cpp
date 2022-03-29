@@ -2,9 +2,9 @@
 
 using namespace std;
 
-A s_a("全局静态变量");
-A g_a("全局变量");
-// A s_a("全局静态变量");
+// static A s_a("globalstatic");
+A g_a("global");
+static A s_a("globalstatic");
 
 int main(int argc, char**  argv)
 {
