@@ -9,39 +9,38 @@ lvalue: locator value，存储在内存中，可寻址的数据
 ** 为临时变量续命，也就是为右值续命，因为右值在表达式
 ** 结束后就消亡了，如果想继续使用右值，那就会动用昂贵
 ** 的拷贝构造函数。
-** 右值引用本身是一个左值
+** 右值引用用来支持转移语义
+** 
+** 
+** 右值引用本身是一个左值,见下面的实验。
 ** 左值 = 左值，可以, 天经地义
 ** 左值 = 右值引用，可以, 如下文中"int n = m"
 ** 右值引用 = 右值引用，可以, 如下文中所述的“右值可以赋给右值”，表达式作为右值也可以赋给右值
 ** 右值引用 = 左值，不可以，如下文中所述的“无法将右值引用绑定到左值”
 */
 
+void process_value(int& i)
+{
+    cout << "LValue Processed: " << i << endl;
+}
+
+void process_value(int&& i)
+{
+    cout << "RValue Processed: " << i << endl;
+}
+
 int main(int argc, char**  argv)
 {
     cout << "Hello World!" << endl;
     cout << "========左值右值========" << endl;
-    int i = 0;
-    int &j = i;  // 左值引用，j相当于i的别名
-    j = 5;
-    cout << "i = " << i << endl;
-    ((i > 0) ? i : j) = 1; // 正确，右值也可以出现在赋值表达式的左边？？？
-    cout << "i = " << i << endl;
-    // int &k = 10;
-    const int &l = 10; // 正确，这是特殊情况，左值引用常量;const变量对于编译器来说就是常量，所以用常量来赋值是可行的。
-    cout << "l = " << l << endl;
+    ShowBasic();
 
-    // int &&m = i; // 错误，无法将右值引用绑定到左值
-    int &&m = i + 5; // 正确，右值引用,跟上面比较，右边是一个表达式，也是右值，所以这里是右值赋给右值
-    cout << "m = " << m << endl;
-    m += 4;
-    cout << "m = " << m << " i = "  << i << endl;
-    int n = m;  // m是右值，n是左值，所以右值可以赋给左值。
-    cout << "n = " << n << endl;
+    int a = 0;
+    process_value(a);  // a是一个变量，是个左值
+    process_value(1);
+    process_value((a != 0) ? 1 : -1);
 
-    // int &&n = m;  // 错误，无法将右值引用绑定到左值
-    int &&a = 1;
-    const int &b = 1;
-    m = a;  // 右值可以赋给右值
-    cout << "m = " << m << " a = "  << a << endl;
+    int&& x = 3;
+    process_value(x);  // LValue, 可见x被视为一个左值
     return 0;
 }
