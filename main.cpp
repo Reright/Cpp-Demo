@@ -71,6 +71,9 @@ int main(int argc, char**  argv)
     base->fun3();
     base->fun4();
 
+    delete der;  // 显式释放指针才能在程序结束前调用析构函数
+    delete base;
+
     cout << endl << endl << "========Const========" << endl;
     A a1;
     const A &b1 = a1;

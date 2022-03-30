@@ -43,6 +43,10 @@ public:
 
 class Base {
 public:
+    Base() { cout << "Base Constructor! " << endl; }
+    
+    virtual ~Base() { cout << "Base Destructor" << endl; }
+
     virtual void fun() { cout << "virtual void Base::fun()" << endl; }
 
     virtual void fun1() const { cout << "virtual void Base::fun1() const" << endl; }
@@ -61,6 +65,10 @@ void Base::fun4()  // 纯虚函数是可以定义的，但它不会被派生类�
 
 class Derive final : public Base {  // derive是最后一个继承类，其他类不能再继承Derive
 public:
+    Derive() { cout << "Derive Constructor! " << endl; }
+    
+    virtual ~Derive() { cout << "Derive Destructor" << endl; }
+
     void fun() override { cout << "void Derive::fun() override" << endl; }
     
     virtual void D_fun1() { cout << "virtual void Derive::D_fun1()" << endl; }
