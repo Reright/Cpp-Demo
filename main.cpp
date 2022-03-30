@@ -17,6 +17,12 @@ int main(int argc, char**  argv)
     cout << "l = " << l << endl;
 
     int &&m = i + 5; // 正确，右值引用
+    cout << "m = " << m << endl;
+    m += 4;
+    cout << "m = " << m << " i = "  << i << endl;
+    int n = m;
+    cout << "n = " << n << endl;
+
     // int &&n = m;  // 错误，无法将右值引用绑定到左值
     int &&a = 1;
     const int &b = 1;
