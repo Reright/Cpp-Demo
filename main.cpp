@@ -85,13 +85,19 @@ int main(int argc, char**  argv)
     e->f();  // non const
     cout << endl << endl << "Demo ends" << endl;
 
-
+    cout << endl << endl << "========Virtual Function Table========" << endl;
     A pa1,pa2;
+    B pb1, pb2;
     int * pVfptr = (int*)(&pa1);
     printf("pa1 的__vfptr = %x\n",(*pVfptr));
 
     pVfptr = (int*)(&pa2);
     printf("pa2 的__vfptr = %x\n",(*pVfptr));
 
+    pVfptr = (int*)(&pb1);
+    printf("pb1 的__vfptr = %x\n",(*pVfptr));
+
+    pVfptr = (int*)(&pb2);
+    printf("pb2 的__vfptr = %x\n",(*pVfptr));
     return 0;
 }
