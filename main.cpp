@@ -65,6 +65,7 @@ int main(int argc, char**  argv)
 
     cout << endl << endl;
     cout << "Base method" << endl;
+    // base->Base2Func(); 当base指针类型时Base2时，可以调用
     base->fun();
     base->fun1();
     base->fun2();
