@@ -11,10 +11,24 @@ using namespace std;
 ** 拷贝赋值
 ** 移动赋值
 ** 赋值构造函数
+** 右值引用用来支持转移语义
+** 转移语义可以将资源(堆，系统对象等)从一个对象转移到
+** 另一个对象，这样能够减少不必要的临时对象的创建、拷
+** 贝以及销毁，能够大幅度提高C++应用程序的性能。临时
+** 对象的维护(创建和销毁)对性能有严重影响。
 */
 
 int main(int argc, char**  argv)
 {
     cout << "Hello World!" << endl << endl << endl;
+    MyString* a;
+    a = new MyString("HelloWorld!");
+    delete a;
+    // 上面的过程没有输出任何打印，只是执行了第二个构造函数而已。
+
+    MyString b;
+    b = MyString("Hello");  // 调用了拷贝赋值操作;有了转移赋值操作后，调用转移赋值操作
+    vector<MyString> vec;
+    vec.push_back(MyString("World"));  // 调用了拷贝构造函数;有了转移构造函数后，调用转移构造函数
     return 0;
 }
