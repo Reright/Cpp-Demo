@@ -85,5 +85,13 @@ int main(int argc, char**  argv)
     e->f();  // non const
     cout << endl << endl << "Demo ends" << endl;
 
+
+    A pa1,pa2;
+    int * pVfptr = (int*)(&pa1);
+    printf("pa1 的__vfptr = %x\n",(*pVfptr));
+
+    pVfptr = (int*)(&pa2);
+    printf("pa2 的__vfptr = %x\n",(*pVfptr));
+
     return 0;
 }
