@@ -2,6 +2,13 @@
 
 using namespace std;
 
+/*
+** 右值引用的意义:
+** 为临时变量续命，也就是为右值续命，因为右值在表达式
+** 结束后就消亡了，如果想继续使用右值，那就会动用昂贵
+** 的拷贝构造函数。
+*/
+
 int main(int argc, char**  argv)
 {
     cout << "Hello World!" << endl;
