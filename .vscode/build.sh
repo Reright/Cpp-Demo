@@ -1,5 +1,5 @@
 #!/bin/sh
-echo 'Echo'
+echo 'Compile Start'
 
 CXX=g++
 
