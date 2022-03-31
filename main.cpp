@@ -39,11 +39,11 @@ int main(int argc, char**  argv)
     ShowBasic();
 
     int a = 0;
-    process_value(a);  // a是一个变量，是个左值
-    process_value(1);
-    process_value((a != 0) ? 1 : -1);
+    process_value(a);  // LValue
+    process_value(1);  // RValue
+    process_value((a != 0) ? 1 : -1);  // RValue
 
     int&& x = 3;
-    process_value(x);  // LValue, 可见x被视为一个左值
+    process_value(x);  // LValue, 可见右值引用被视为一个左值
     return 0;
 }
