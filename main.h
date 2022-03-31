@@ -28,6 +28,6 @@ void ShowBasic()
     // int &&n = m;  // 错误，无法将右值引用绑定到左值
     int &&a = 1;
     const int &b = 1;
-    m = a;  // 右值可以赋给右值
+    m = a;  // 右值引用可以赋给右值引用
     cout << "m = " << m << " a = "  << a << endl;
 }
