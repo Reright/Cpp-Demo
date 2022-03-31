@@ -27,8 +27,21 @@ int main(int argc, char**  argv)
     // 上面的过程没有输出任何打印，只是执行了第二个构造函数而已。
 
     MyString b;
-    b = MyString("Hello");  // 调用了拷贝赋值操作;有了转移赋值操作后，调用转移赋值操作
-    vector<MyString> vec;
-    vec.push_back(MyString("World"));  // 调用了拷贝构造函数;有了转移构造函数后，调用转移构造函数
+    // b = MyString("Hello");  // 调用了拷贝赋值操作;有了转移赋值操作后，调用转移赋值操作
+    std::vector<MyString> vec;
+    // vec.push_back(MyString("push1"));  // 调用了拷贝构造函数;有了转移构造函数后，调用转移构造函数
+    vec.emplace_back("emplace");
+
+    deque<MyString> queue;
+    list<MyString> list;
+    queue.emplace_back("queue1");
+
+    std::vector<MyTest> vect;
+    vect.reserve(2); //预先分配内存
+    cout << "\n ------ push_back --------"<< endl;
+    vect.push_back(MyTest(1, 20));
+    cout << "\n ------ emplace_back --------"<< endl;
+    vect.emplace_back(1, 20);  // 这是emplace_back的标准用法，可以提升插入效率
+    cout << "\n -------- finish -------- "<< endl;
     return 0;
 }

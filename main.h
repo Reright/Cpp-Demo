@@ -2,6 +2,8 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <deque>
+#include <list>
 
 using namespace std;
 
@@ -69,4 +71,36 @@ public:
         if (_data)
             free(_data);
     }
+};
+
+
+class MyTest {
+
+public:
+    //普通构造
+    MyTest(int id,int age):m_id(id),m_age(age)
+    {
+        cout << "ceate MyTest class..."<< this << endl;
+    }
+
+    //拷贝构造
+    MyTest(const MyTest &t):m_id(t.m_id),m_age(t.m_age)
+    {
+        cout << "copy construct called..."<< this << endl;
+    }
+    //移动构造
+    MyTest(const MyTest &&t)
+    {
+        m_id = std::move(t.m_id);
+        m_age = std::move(t.m_age);
+        cout << "move contruct called.."<< this << endl;
+    }
+    //析构
+    virtual ~MyTest()
+    {
+        cout << "destory MyTest class..."<< this << endl;
+    }
+private:
+    int m_id; //id成员
+    int m_age;//age成员
 };
