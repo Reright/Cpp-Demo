@@ -63,5 +63,14 @@ int main(int argc, char**  argv)
         std::cout << president.name << " was re-elected president of "  
             << president.country << " in " << president.year << ".\n";  
     }
+
+    cout << "\n ************************** Test03 ************************** "<< endl;
+    string tmp = "Nameca";
+    A ca(0, tmp.c_str());  // c_str()返回的是一个const char*
+    // 禁用了拷贝构造函数后，一下两种用法都被禁止了
+    // A cb(ca);  
+    // A cb = ca;
+    ca.PrintOut();
+    // cb.PrintOut();
     return 0;
 }

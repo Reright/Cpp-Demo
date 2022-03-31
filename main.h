@@ -130,3 +130,20 @@ struct President
     President& operator=(const President& other);  
 };  
 
+class A {
+public:
+    A(int a, const char* str) : m_a(a), m_str(str)
+    {
+        cout << "Newly-Defined Constructor! " << endl;
+    }
+    A() = delete;
+    A(const A& a) = delete;
+
+    void PrintOut()
+    {
+        cout << "a is " << m_a << " , str is " << m_str << endl;
+    }
+private:
+    int m_a;
+    const char* m_str;
+};
