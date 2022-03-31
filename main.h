@@ -104,3 +104,29 @@ private:
     int m_id; //id成员
     int m_age;//age成员
 };
+
+
+struct President  
+{  
+    std::string name;  
+    std::string country;  
+    int year;  
+
+    President(std::string p_name, std::string p_country, int p_year)  
+        : name(std::move(p_name)), country(std::move(p_country)), year(p_year)  
+    {  
+        std::cout << "I am being constructed.\n";  
+    }
+    President(const President& other)
+        : name(std::move(other.name)), country(std::move(other.country)), year(other.year)
+    {
+        std::cout << "I am being copy constructed.\n";
+    }
+    President(President&& other)  
+        : name(std::move(other.name)), country(std::move(other.country)), year(other.year)  
+    {  
+        std::cout << "I am being moved.\n";  
+    }  
+    President& operator=(const President& other);  
+};  
+

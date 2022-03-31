@@ -36,12 +36,32 @@ int main(int argc, char**  argv)
     list<MyString> list;
     queue.emplace_back("queue1");
 
+    cout << "\n ************************** Test01 ******************** "<< endl;
     std::vector<MyTest> vect;
     vect.reserve(2); //预先分配内存
-    cout << "\n ------ push_back --------"<< endl;
+    cout << "\n ---- push_back ----"<< endl;
     vect.push_back(MyTest(1, 20));
-    cout << "\n ------ emplace_back --------"<< endl;
+    cout << "\n ---- emplace_back ----"<< endl;
     vect.emplace_back(1, 20);  // 这是emplace_back的标准用法，可以提升插入效率
-    cout << "\n -------- finish -------- "<< endl;
+    cout << "\n ---- finish ---- "<< endl;
+
+    cout << "\n ************************** Test02 ************************** "<< endl;
+    std::vector<President> elections;  
+    std::cout << "emplace_back:\n";  
+    elections.emplace_back("Nelson Mandela", "South Africa", 1994); // 直接传入类的构造参数
+
+    std::vector<President> reElections;  
+    std::cout << "\npush_back:\n";  
+    reElections.push_back(President("Franklin Delano Roosevelt", "the USA", 1936));  // 必须传入一个临时对象  
+
+    std::cout << "\nContents:\n";  
+    for (President const& president: elections) {  
+       std::cout << president.name << " was elected president of "  
+            << president.country << " in " << president.year << ".\n";  
+    }  
+    for (President const& president: reElections) {  
+        std::cout << president.name << " was re-elected president of "  
+            << president.country << " in " << president.year << ".\n";  
+    }
     return 0;
 }
