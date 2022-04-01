@@ -71,6 +71,20 @@ int main(int argc, char**  argv)
     // A cb(ca);  
     // A cb = ca;
     ca.PrintOut();
+    // A ta;  已经提供了一个构造函数，默认的无参构造就无法调用了
     // cb.PrintOut();
+
+    // const B sb;  // programmar定义了任意一种构造函数后，编译器就不再提供默认构造函数，因此不能这样声明
+    const B sb(2, "Namesb");
+    sb.PrintOut();
+
+    Test1 ex1;
+    cout << endl;
+    Test2 ex2;
+
+    cout << "\n ************************** Test04 ************************** "<< endl;
+    cout << "Size of class EmptyClass is " << sizeof(EmptyClass) << endl;
+    EmptyClass emptycl;
+    cout << "Size of EmptyClass Object is " << sizeof(emptycl) << endl;
     return 0;
 }
