@@ -78,13 +78,17 @@ int main(int argc, char**  argv)
     const B sb(2, "Namesb");
     sb.PrintOut();
 
-    Test1 ex1;
-    cout << endl;
-    Test2 ex2;
-
     cout << "\n ************************** Test04 ************************** "<< endl;
+    Test1 ex1;
+    Test2 ex2;
+    A2 aex2(2);
+    Test3 ex3(aex2);
+    Test4 ex4(1, 2);
+
+    cout << "\n ************************** Test05 ************************** "<< endl;
     cout << "Size of class EmptyClass is " << sizeof(EmptyClass) << endl;
     EmptyClass emptycl;
     cout << "Size of EmptyClass Object is " << sizeof(emptycl) << endl;
+
     return 0;
 }

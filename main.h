@@ -178,6 +178,21 @@ public:
         val = tmp;
         cout << "A2(int " << val << ")" << endl;
     }
+    A2(const A2& tmp)
+    {
+        cout << "A2(const A2& tmp)" << endl;
+    }
+
+    A2& operator = (const A2& tmp)
+    {
+        cout << "A2& operator = (const A2& tmp)" << endl;
+        return *this;  //这里是return *this,想想为什么？
+    }
+
+    void fun(A2 tmp)
+    {
+
+    }
 };
 
 class Test1 {
@@ -187,6 +202,7 @@ private:
 public:
     Test1() : ex(1) // 成员列表初始化方式
     {
+        cout << "Test 1" << endl << endl;
     }
 };
 
@@ -196,33 +212,52 @@ private:
 
 public:
     Test2() // 函数体中赋值的方式
+    // 这里没有通过参数列表初始化的方式，所以ex会先自动调用默认构造函数， 因此会先打印“A2()”
     {
         ex = A2(2);
+        cout << "Test 2" << endl << endl;
+        // 然后等号右边的临时变量A2(2)通过构造函数构造出来，打印"A2(int a)"
+        // 最后把临时变量赋值给ex，调用了赋值操作符，打印"operator"
+    }
+};
+
+class Test3 {
+private:
+    A2 ex;
+
+public:
+    Test3(const A2& tmp):ex(tmp)
+    {
+        ex.fun(tmp);
+        cout << "Test 3" << endl;
     }
 };
 
 class A3 {
 public:
-    A3(int a, int b)
+    A3(int a, int b):m_b(b), m_a(a)  // 编译时会告警，m_b会在m_a后面初始化，按照声明的顺序
     {
-        m_a = a;
-        m_b = b;
+        // m_a = a;
+        // m_b = b;
+        cout << "m_a: " << m_a << " m_b: " << m_b << endl;
     }
 private:
     int m_a;
     int m_b;
 };
 
-class Test3 {
+class Test4 {
 private:
-    A3 a3;  // 这里A3会先调用默认构造函数设置初始值
+    A2 a2;
+    A3 a3;
 public:
     // 这里即便不利用初始化列表来初始化a3，也会调用默认构造函数先初始化一把
-    Test3(int a, int b):a3(a, b) 
+    Test4(int a, int b):a2(a), a3(a, b) 
     {
-        // a3 = A3(a, b);
-        // 如果不在初始化列表中给a3传参初始化，则会调用默认构造函数；
-        // 而A3已经提供了一个构造函数，编译器不会再提供默认构造函数，因此会报错。
+        cout << "Test 4" << endl;
+        // a2 = A2(a);
+        // 如果不在初始化列表中给a2传参初始化，则会调用默认构造函数；
+        // 而A2已经提供了一个构造函数，编译器不会再提供默认构造函数，因此会报错。
     }
 };
 
