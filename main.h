@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-#include <memory>
-#include <string>
+#include "test_vector.h"
 
 using namespace std;
