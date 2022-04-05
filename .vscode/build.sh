@@ -9,4 +9,4 @@ g++ -std=c++14 main.cpp \
 main.o
 
 echo '====================='
-echo 'Compile successfully!'
+echo 'Compile successfully!'  # 这个有问题，即使编译错误也会打印

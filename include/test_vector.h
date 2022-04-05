@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <numeric>
 
 using namespace std;
 using std::setw;  // 需要头文件<iomanip>
@@ -32,7 +33,12 @@ void TestVector()
     ShowVec(vec);
     vec.erase(vec.begin(), vec.begin() + 3); // 将[begin(), begin()+3)位置的元素删除，注意begin()+3位置的不包括
     ShowVec(vec);
-    vec.insert(vec.end(), vec.begin(), vec.begin() + 2);
+    vec.insert(vec.end(), vec.begin(), vec.begin() + 2);  // 随机迭代器才支持begin()+2的用法
+    ShowVec(vec);
+    cout << "Before rbegin: " << endl;
+    ShowVec(vec);
+    cout << "rbegin: " << endl;
+    vec.insert(vec.begin(), vec.rbegin(), vec.rbegin() + 2);  // 为啥是这个结果？
     ShowVec(vec);
     vector<int> vect(vec.begin() + 1, vec.end() - 1);
     ShowVec(vect);
@@ -78,8 +84,8 @@ void TestVector()
     sort(vec.begin(), vec.end());
     ShowVec(vec);
     /*典型STL函数之random_shuffle*/
-    random_shuffle(vect.begin(), vect.end());  // C++14 deprecated but still works
-    ShowVec(vect);
+    // random_shuffle(vect.begin(), vect.end());  // C++14 deprecated but still works
+    // ShowVec(vect);
     /*典型STL函数之for_each*/
     std::for_each(vect.begin(), vect.end(), [&](auto& c){ c -= 1;});
     ShowVec(vect);
@@ -92,6 +98,8 @@ void TestVector()
     cout << "vect capacity is " << vect.capacity() << " vect size is " << vect.size() << endl;
     vect[2] = 5;
     ShowVec(vect);
+    int acc = accumulate(vect.begin(), vect.end(), 0);
+    cout << "Sum of vect is " << acc << endl;
     /*典型STL函数之find*/
     auto f = find(vect.begin(), vect.end(), 5);  // 找到第一个满足条件的元素
     cout << "next element of f is " << *(f+2) << endl;

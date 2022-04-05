@@ -4,6 +4,8 @@ using namespace std;
 
 int main(int argc, char**  argv)
 {
-    TestVector();
+    // TestVector();
+    // TestList();
+    TestForwardList();
     return 0;
 }
