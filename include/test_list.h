@@ -45,7 +45,7 @@ void TestList()
     ShowList(l);
     l.emplace_front(6);
     ShowList(l);
-    cout << "max_size of l is " << hex << "0x" << l.max_size() << endl;
+    cout << "max_size of l is " << hex << "0x" << l.max_size() << dec << endl;
     l.remove(3);  // 删除所有值为3的元素
     ShowList(l);
     l.remove_if(GreaterThan4);  // 入参是一个返回bool值的函数
@@ -60,5 +60,20 @@ void TestList()
     ShowList(l);
     l.reverse();  // 元素反排
     ShowList(l);
-
+    list<int> li(5);
+    li.assign(v.begin(), v.end());
+    ShowList(li);
+    cout << "l.splice(l.begin(), li, ++li.begin(), ++li.end())" << endl;
+    l.splice(l.begin(), li, ++li.begin(), --li.end());
+    ShowList(l);
+    ShowList(li);
+    cout << "l.merge(li)" << endl;
+    l.merge(li);
+    ShowList(l);
+    ShowList(li);
+    l.sort();
+    ShowList(l);
+    l.remove(0);  // 删除所有值为0的元素
+    ShowList(l);
+    
 }
