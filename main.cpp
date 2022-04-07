@@ -5,7 +5,9 @@ using namespace std;
 int main(int argc, char**  argv)
 {
     // TestVector();
-    TestList();
+    // TestList();
     // TestForwardList();
+    TestMap();
+    // TestSet();
     return 0;
 }

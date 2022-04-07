@@ -5,6 +5,7 @@
 #include "test_map.h"
 #include "test_priority_queue.h"
 #include "test_stack.h"
-
+#include "test_set.h"
+#include "test_unordered_map.h"
 
 using namespace std;
