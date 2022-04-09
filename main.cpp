@@ -42,8 +42,61 @@ int main(int argc, char**  argv)
     process_value(a);  // LValue
     process_value(1);  // RValue
     process_value((a != 0) ? 1 : -1);  // RValue
+    process_value(a++);  // RValue
+    process_value(++a);  // LValue
 
     int&& x = 3;
-    process_value(x);  // LValue, 可见右值引用被视为一个左值
+    process_value(x);  // LValue, 可见具名的右值引用被视为一个左值
+
+    cout << "\nA a1 = GetA();" << endl;
+    A a1 = GetA();
+    cout << "a1 in main is " << &a1 << endl;
+    g_constructCount=0;
+    g_copyConstructCount=0;
+    g_destructCount=0;
+    cout << "\nA&& a2 = GetA();" << endl;
+    A&& a2 = GetA();  // 少一次拷贝和析构
+    cout << "a2 in main is " << &a2 << endl;
+    g_constructCount=0;
+    g_copyConstructCount=0;
+    g_destructCount=0;
+    // cout << "\n It ends" << endl;
+    cout << "\nconst A& a3 = GetA();" << endl;
+    const A& a3 = GetA();  // 常量左值引用是“万能”引用类型
+    // A& a4 = GetA();  // 普通左值引用只能接受左值
+    cout << "a3 in main is " << &a3 << endl;
+    int var1 = 1;
+    cout << "Address of var1 is " << &var1 << endl << endl << endl;
+    f(10);  // T&& 是右值
+    f(a);   // T&& 是左值
+    int&& yvar = 1;  // 右值引用只能绑定到右值上
+    // int&& var2 = var1;  // 右值引用不能绑定到左值上
+    int& j = var1;  // 左值引用可以绑定到左值上
+    j = yvar;  // 这里yvar本身是一个左值，见上面:具名的右值引用是一个左值
+    // int& m = 1;  // 普通左值引用不能绑定到右值上
+    const int& m = 1;  // 常量左值引用是“万能”引用类型
+
+    cout << "================Test reference pass================" << endl;
+    TestRefPass(a1);   // 匹配左值引用， 啥也不干
+    TestRefPass(A());  // 匹配右值引用，构造一次就结束
+    TestValuePass(a1); // 匹配值传递，要拷贝一次，但此时的a1是左值，所以匹配拷贝构造函数
+    TestValuePass(A());// 匹配值传递，要拷贝一次，但此时A()是右值，所以匹配移动构造函数
+    cout << "================Class B Test================" << endl;
+    B b = GetB(false);
+    GetB(false);
+    cout << "================std::move Test================" << endl;
+    vector<int> vec = {0, 1, 2, 3, 4, 5};
+    // vector<int> v = std::move(vec);  // 资源所有权转移，move之后vec就为空了
+    // vector<int> v(vec);          // 用vec初始化v，vec仍然存在
+    vector<int> v = vec;          // 用vec初始化v，vec仍然存在
+    for_each(v.begin(), v.end(), [](auto c){ cout << c << " "; });
+    cout << endl;
+    v[2] = 9;
+    for_each(v.begin(), v.end(), [](auto c){ cout << c << " "; });
+    cout << "\nvec after move: " <<endl;
+    for_each(vec.begin(), vec.end(), [](auto c){ cout << c << " "; });
+
+    cout << "\n================完美转发================" << endl;
+    Testdelcl();
     return 0;
 }
