@@ -7,5 +7,7 @@
 #include "test_stack.h"
 #include "test_set.h"
 #include "test_unordered_map.h"
+#include "test_string.h"
+#include "test_unordered_set.h"
 
 using namespace std;

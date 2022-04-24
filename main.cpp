@@ -7,7 +7,9 @@ int main(int argc, char**  argv)
     // TestVector();
     // TestList();
     // TestForwardList();
-    TestMap();
+    // TestMap();
     // TestSet();
+    // TestString();
+    TestUnorderedSet();
     return 0;
 }
