@@ -4,6 +4,8 @@
         "__config": "cpp",
         "ostream": "cpp",
         "vector": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "new": "cpp"
     }
 }

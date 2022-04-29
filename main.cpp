@@ -28,12 +28,13 @@ int main(int argc, char**  argv)
     // TestSet();
     // TestString();
     // TestUnorderedSet();
-    vector<int> s;
+    vector<int> s({5,7,2,1,0,9,4});
+    // vector<int> s({1,0});
     cout << "----- QuickSort -----" << endl;
-    QuickSort(s);
+    // QuickSort(s);
     cout << "----- MergeSort -----" << endl;
     MergeSort(s);
-    shared_ptr<int> p1(new int);
+    shared_ptr<int> p1(new int(10));
     auto p2 = p1;
     auto use = p2.use_count();
     cout << "p2.use_count: "  << use << endl;
