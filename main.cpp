@@ -9,7 +9,7 @@
 基础技巧:  分治、倍增、二分、贪心
 
 数据结构 - Data Structures
-数组与链表:单 / 双向链表、跳舞链
+数组与链表: 单/双向链表、跳舞链
 栈与队列
 树与图:    最近公共祖先、并查集
 哈希表
@@ -27,6 +27,15 @@ int main(int argc, char**  argv)
     // TestMap();
     // TestSet();
     // TestString();
-    TestUnorderedSet();
+    // TestUnorderedSet();
+    vector<int> s;
+    cout << "----- QuickSort -----" << endl;
+    QuickSort(s);
+    cout << "----- MergeSort -----" << endl;
+    MergeSort(s);
+    shared_ptr<int> p1(new int);
+    auto p2 = p1;
+    auto use = p2.use_count();
+    cout << "p2.use_count: "  << use << endl;
     return 0;
 }
