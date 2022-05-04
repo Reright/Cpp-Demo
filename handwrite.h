@@ -9,6 +9,7 @@
 #include "test_unordered_map.h"
 #include "test_string.h"
 #include "test_unordered_set.h"
+#include "BinaryTree.h"
 using namespace std;
 
 /*

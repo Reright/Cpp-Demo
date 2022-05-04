@@ -34,9 +34,9 @@ int main(int argc, char**  argv)
     // QuickSort(s);
     cout << "----- MergeSort -----" << endl;
     MergeSort(s);
-    shared_ptr<int> p1(new int(10));
-    auto p2 = p1;
-    auto use = p2.use_count();
-    cout << "p2.use_count: "  << use << endl;
+    cout << "----- MergeTwoList -----" << endl;
+    TestMergeLists();
+    cout << "----- TestBinaryTree -----" << endl;
+    TestBinaryTree();
     return 0;
 }
