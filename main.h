@@ -1,4 +1,5 @@
 #include "handwrite.h"
+#include "VariousofSort.h"
 
 using namespace std;
 

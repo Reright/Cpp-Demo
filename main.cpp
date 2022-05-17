@@ -28,15 +28,17 @@ int main(int argc, char**  argv)
     // TestSet();
     // TestString();
     // TestUnorderedSet();
-    vector<int> s({5,7,2,1,0,9,4});
+    // vector<int> s({5,7,2,1,0,9,4});
     // vector<int> s({1,0});
-    cout << "----- QuickSort -----" << endl;
+    // cout << "----- QuickSort -----" << endl;
     // QuickSort(s);
-    cout << "----- MergeSort -----" << endl;
-    MergeSort(s);
-    cout << "----- MergeTwoList -----" << endl;
-    TestMergeLists();
-    cout << "----- TestBinaryTree -----" << endl;
-    TestBinaryTree();
+    // cout << "----- MergeSort -----" << endl;
+    // MergeSort(s);
+    // cout << "----- MergeTwoList -----" << endl;
+    // TestMergeLists();
+    // cout << "----- TestBinaryTree -----" << endl;
+    // TestBinaryTree();
+
+    TestVariousofSort();
     return 0;
 }

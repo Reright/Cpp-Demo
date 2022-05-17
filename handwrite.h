@@ -52,7 +52,7 @@ void QuickSort(vector<int>& s)
     for_each(s.begin(), s.end(), [](auto c){ cout << c << " "; }); cout << endl;
 }
 
-void mergearray(vector<int>& a, int first, int mid, int last, int temp[])
+static void mergearray(vector<int>& a, int first, int mid, int last, int temp[])
 {
 	int i = first, j = mid + 1;
 	int m = mid,   n = last;
@@ -80,7 +80,7 @@ void mergearray(vector<int>& a, int first, int mid, int last, int temp[])
 当进入这个函数时，可以认为s中的[l, m]是第一段排好序的
 s中的[m + 1, r]是第二段排好序的；最终要把[l,r]排好序放到tmp中，
 */
-void mergeArray(vector<int>& s, int tmp[], int l, int m, int r)
+static void mergeArray(vector<int>& s, int tmp[], int l, int m, int r)
 {
     // 剩下的就是将升序数组合并操作了,
     // 经典的合并两个有序数组代码，必须牢记
@@ -122,7 +122,7 @@ void mergeArray(vector<int>& s, int tmp[], int l, int m, int r)
     return;
 }
 
-void mergesort(vector<int>& s, int l, int r, int tmp[])
+static void mergesort(vector<int>& s, int l, int r, int tmp[])
 {
     if(l < r) {
         int mid = (l + r) / 2;
@@ -143,7 +143,7 @@ void mergesort(vector<int>& s, int l, int r, int tmp[])
 归并排序的过程是: 递归拆分 + 合并
 需要用到一个辅助数组
 */
-void MergeSort(vector<int>& s)
+static void MergeSort(vector<int>& s)
 {
     int size = s.size();
     if(size == 0 || size == 1)
