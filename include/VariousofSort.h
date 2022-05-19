@@ -61,6 +61,14 @@ void QuickSortRandom(vector<int>& arr, int l, int r)
     return;
 }
 
+void swap(int& a, int& b) {
+    if (a != b) {
+        a ^= b;
+        b ^= a;  // b = b^a = b^a^b = a;
+        a ^= b;  // a = a^b = a^b^a = b;
+    }
+}
+
 /* 
  * 先随机选取一个基准值,目标是把比基准值小的都放在左边, 大的放在右边;
  * 刚开始先把基准跟最左边的元素互换, 目的是使得夹逼的过程不受自身的干扰;
